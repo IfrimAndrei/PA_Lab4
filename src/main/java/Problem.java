@@ -54,6 +54,9 @@ public class Problem {
         var schools = IntStream.rangeClosed(0, 2)
                 .mapToObj(i -> new School("H" + i) )
                 .toArray(School[]::new);
+        schools[0].setCapacity(1);
+        schools[0].setCapacity(2);
+        schools[0].setCapacity(2);
         schoolList.addAll( Arrays.asList(schools) );
 
 
@@ -100,8 +103,10 @@ public class Problem {
         for( Student i: students)
         {
             //System.out.println(i.getName() );
-            studs.append( i.getName() ).append( "; " );
+            studs.append( i.getName() ).append( " " );
+            studs.append( i.getScore()).append( "; " );
         }
+
         return studs.toString();
     }
     public String schoolsToString(List<School> schools)

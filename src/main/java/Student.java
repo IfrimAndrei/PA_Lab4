@@ -9,7 +9,7 @@ public class Student {
     public Student()
     {
         Faker faker = new Faker();
-        name=faker.name().fullName();
+        name=faker.name().firstName();
         score=faker.number().numberBetween( 1,10 );
     }
     public Student(String name) {
