@@ -1,3 +1,5 @@
+import com.github.javafaker.Faker;
+
 import java.util.Objects;
 import java.util.stream.IntStream;
 
@@ -7,7 +9,11 @@ public class School implements Comparable<School> {
     public School(String name) {
         this.name = name;
     }
-
+    public School()
+    {
+        Faker faker = new Faker();
+        name=faker.university().name();
+    }
     public String getName( ) {
         return name;
     }
