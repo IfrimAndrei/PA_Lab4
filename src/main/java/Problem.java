@@ -55,10 +55,9 @@ public class Problem {
                 .mapToObj(i -> new School("H" + i) )
                 .toArray(School[]::new);
         schools[0].setCapacity(1);
-        schools[0].setCapacity(2);
-        schools[0].setCapacity(2);
+        schools[1].setCapacity(2);
+        schools[2].setCapacity(2);
         schoolList.addAll( Arrays.asList(schools) );
-
 
         studPrefMap.put(students[0], Arrays.asList(schools[0], schools[1], schools[2]));
         studPrefMap.put(students[1], Arrays.asList(schools[0], schools[1], schools[2]));
@@ -84,16 +83,29 @@ public class Problem {
                 .mapToObj(i -> new School() )
                 .toArray(School[]::new);
         schoolList.addAll( Arrays.asList(schools) );
-
+        schools[0].setCapacity(1);
+        schools[1].setCapacity(2);
+        schools[2].setCapacity(2);
 
         studPrefMap.put(students[0], Arrays.asList(schools[0], schools[1], schools[2]));
         studPrefMap.put(students[1], Arrays.asList(schools[0], schools[1], schools[2]));
         studPrefMap.put(students[2], Arrays.asList(schools[0], schools[1]));
         studPrefMap.put(students[3], Arrays.asList(schools[0], schools[2]));
 
-        schoolPrefMap.put(schools[0], Arrays.asList(students[3], students[0], students[1], students[2]));
-        schoolPrefMap.put(schools[1], Arrays.asList(students[0], students[2], students[1]));
-        schoolPrefMap.put(schools[2], Arrays.asList(students[0], students[1], students[3]));
+        List<Student> aux= Arrays.asList(students[3], students[0], students[1], students[2]);
+        aux.sort( (Comparator.comparing( Student::getScore )) );
+        Collections.reverse( aux );
+        schoolPrefMap.put(schools[0],aux);
+
+        aux= Arrays.asList(students[0], students[2], students[1]);
+        aux.sort( (Comparator.comparing( Student::getScore )) );
+        Collections.reverse( aux );
+        schoolPrefMap.put(schools[1], aux);
+
+        aux=  Arrays.asList(students[0], students[1], students[3]);
+        aux.sort( (Comparator.comparing( Student::getScore )) );
+        Collections.reverse( aux );
+        schoolPrefMap.put(schools[2],aux);
 
 
     }
@@ -126,5 +138,35 @@ public class Problem {
         studPrefMap.forEach((key, value) -> System.out.println(key.getName() + ": " + schoolsToString( value )));
     }
 
+    public List<Student> getStudentList( ) {
+        return studentList;
+    }
 
+    public Set<School> getSchoolList( ) {
+        return schoolList;
+    }
+
+    public Map<Student, List<School>> getStudPrefMap( ) {
+        return studPrefMap;
+    }
+
+    public Map<School, List<Student>> getSchoolPrefMap( ) {
+        return schoolPrefMap;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public void setSchoolList(Set<School> schoolList) {
+        this.schoolList = schoolList;
+    }
+
+    public void setStudPrefMap(Map<Student, List<School>> studPrefMap) {
+        this.studPrefMap = studPrefMap;
+    }
+
+    public void setSchoolPrefMap(Map<School, List<Student>> schoolPrefMap) {
+        this.schoolPrefMap = schoolPrefMap;
+    }
 }
