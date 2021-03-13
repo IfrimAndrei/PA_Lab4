@@ -92,7 +92,7 @@ public class Problem {
         studPrefMap.put(students[2], Arrays.asList(schools[0], schools[1]));
         studPrefMap.put(students[3], Arrays.asList(schools[0], schools[2]));
 
-        List<Student> aux= Arrays.asList(students[3], students[0], students[1], students[2]);
+        List<Student> aux= new LinkedList<> (Arrays.asList(students[3], students[0], students[1], students[2]));
         aux.sort( (Comparator.comparing( Student::getScore )) );
         Collections.reverse( aux );
         schoolPrefMap.put(schools[0],aux);

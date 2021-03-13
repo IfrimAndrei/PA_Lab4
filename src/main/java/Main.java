@@ -7,7 +7,7 @@ public class Main {
     example.create();
     example.print();
     Solution sol = new Solution();
-    sol.resolve( example );
+    //sol.resolve( example );
 
     }
 }
