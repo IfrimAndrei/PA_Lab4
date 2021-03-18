@@ -8,11 +8,6 @@ public class Problem {
     private Map <Student,List<School>> studPrefMap = new HashMap<>();
     private Map <School,List<Student>> schoolPrefMap = new TreeMap<>();
 
-    public void create (){
-
-        //initMapsCompulsory();
-        initMapsOptional();
-    }
 
     public void schoolCandidats(List<School> target) //display the students who find acceptable a given list of schools
     {
@@ -39,7 +34,7 @@ public class Problem {
             System.out.print(s.getName() + " ");
         }
     }
-    public boolean schoolWantStud(School target,Student student) //display schools that have a given student as their top preference
+    public boolean schoolWantStud(School target,Student student) //true if a there's matching between given school and given student
     {
         int topChoice=0;
         for(Student s : getSchoolPrefMap().get(target))
@@ -47,7 +42,7 @@ public class Problem {
             if(s==student)
                 return true;
             topChoice++;
-            if(topChoice == target.getCapacity())
+            if(topChoice >= target.getCapacity())
                 return false;
         }
 
@@ -145,7 +140,7 @@ public class Problem {
     public void print()
     {
         System.out.println("Lista de preferinte este: ");
-        schoolPrefMap.forEach((key, value) -> System.out.println(key.getName() + ": " + studentsToString( value )));
+        schoolPrefMap.forEach((key, value) -> System.out.println(key.getName() + key.getCapacity() + ": " + studentsToString( value )));
         System.out.println();
         studPrefMap.forEach((key, value) -> System.out.println(key.getName() + ": " + schoolsToString( value )));
     }
