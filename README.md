@@ -1,4 +1,3 @@
 # PA_Lab4
-Partea de Compulsory si Optional, la optional lipseste algoritmul de rezolvare (mai am niste erori, probabil pentru ca dau remove in for pe acesi lista)
-Clasa problema are 2 metode de initializare,una pentru varianta simpla din exempl/compulsory si una pentru varianta din optional (cu nume random si note)
-
+Partea de Compulsory si Optional complete;
+Algoritmul de la Optional sorteaza studentii dupa Scorul obtinut si ii trimite la prima Scoala care ii are pe lista;
