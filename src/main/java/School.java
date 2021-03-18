@@ -12,7 +12,8 @@ public class School implements Comparable<School> {
     public School()
     {
         Faker faker = new Faker();
-        name=faker.university().name();
+        //name=faker.university().name();
+        name=faker.dog().name() + " Univ.";
     }
 
     public void setCapacity(int capacity) {

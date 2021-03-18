@@ -12,8 +12,6 @@ public class Problem {
 
         //initMapsCompulsory();
         initMapsOptional();
-
-
     }
 
     public void schoolCandidats(List<School> target) //display the students who find acceptable a given list of schools
@@ -27,7 +25,7 @@ public class Problem {
         for (Student s : result) {
             System.out.print(s.getName() + " ");
         }
-        // return result
+        //return result;
 
     }
     public void studentOptions(List<Student> target) //display schools that have a given student as their top preference
@@ -40,6 +38,20 @@ public class Problem {
         for (School s : result) {
             System.out.print(s.getName() + " ");
         }
+    }
+    public boolean schoolWantStud(School target,Student student) //display schools that have a given student as their top preference
+    {
+        int topChoice=0;
+        for(Student s : getSchoolPrefMap().get(target))
+        {
+            if(s==student)
+                return true;
+            topChoice++;
+            if(topChoice == target.getCapacity())
+                return false;
+        }
+
+        return false;
     }
 
     public void initMapsCompulsory()//The Problem given as example,with H0 H1...,without adding numbers/specific names to students;
